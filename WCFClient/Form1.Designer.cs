@@ -55,7 +55,7 @@ namespace WCFClient
             this.txtNumber1.Multiline = true;
             this.txtNumber1.Name = "txtNumber1";
             this.txtNumber1.Size = new System.Drawing.Size(158, 32);
-            this.txtNumber1.TabIndex = 1;
+            this.txtNumber1.TabIndex = 0;
             // 
             // label2
             // 
