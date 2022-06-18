@@ -18,5 +18,16 @@ namespace WCFClient
             txtGender.Text = student.Gender;
             txtCity.Text = student.City;
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            HTTP.Student student = new HTTP.Student()
+            {
+                Name = txtName.Text,
+                Gender = txtGender.Text,
+                City = txtCity.Text
+            };
+            client.SaveStudent(student);
+        }
     }
 }
