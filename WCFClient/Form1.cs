@@ -5,8 +5,8 @@ namespace WCFClient
 {
     public partial class Form1 : Form
     {
-        HTTP.CalculateClient client = new HTTP.CalculateClient("BasicHttpBinding_ICalculate");
-        //TCP.CalculateClient client = new TCP.CalculateClient("NetTcpBinding_ICalculate");
+        //HTTP.CalculateClient client = new HTTP.CalculateClient("BasicHttpBinding_ICalculate");
+        TCP.CalculateClient client = new TCP.CalculateClient("NetTcpBinding_ICalculate1");
 
         public Form1()
         {
@@ -15,6 +15,7 @@ namespace WCFClient
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+           
             if ((!string.IsNullOrWhiteSpace(txtNumber1.Text)) && (!string.IsNullOrWhiteSpace(txtNumber2.Text)))
             {
                 double sum = client.Add(Convert.ToDouble(txtNumber1.Text), Convert.ToDouble(txtNumber2.Text));
@@ -25,6 +26,7 @@ namespace WCFClient
 
         private void btnSubtract_Click(object sender, EventArgs e)
         {
+            
             if ((!string.IsNullOrWhiteSpace(txtNumber1.Text)) && (!string.IsNullOrWhiteSpace(txtNumber2.Text)))
             {
                 double subtract = client.Subtract(Convert.ToDouble(txtNumber1.Text), Convert.ToDouble(txtNumber2.Text));

@@ -36,6 +36,8 @@ namespace WCFClient
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnSubtract = new System.Windows.Forms.Button();
             this.lblMessage = new System.Windows.Forms.Label();
+            this.rdoHTTP = new System.Windows.Forms.RadioButton();
+            this.rdoTCP = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // label1
@@ -108,11 +110,35 @@ namespace WCFClient
             this.lblMessage.Size = new System.Drawing.Size(0, 29);
             this.lblMessage.TabIndex = 3;
             // 
+            // rdoHTTP
+            // 
+            this.rdoHTTP.AutoSize = true;
+            this.rdoHTTP.Location = new System.Drawing.Point(64, 184);
+            this.rdoHTTP.Name = "rdoHTTP";
+            this.rdoHTTP.Size = new System.Drawing.Size(66, 21);
+            this.rdoHTTP.TabIndex = 4;
+            this.rdoHTTP.TabStop = true;
+            this.rdoHTTP.Text = "HTTP";
+            this.rdoHTTP.UseVisualStyleBackColor = true;
+            // 
+            // rdoTCP
+            // 
+            this.rdoTCP.AutoSize = true;
+            this.rdoTCP.Location = new System.Drawing.Point(180, 184);
+            this.rdoTCP.Name = "rdoTCP";
+            this.rdoTCP.Size = new System.Drawing.Size(56, 21);
+            this.rdoTCP.TabIndex = 4;
+            this.rdoTCP.TabStop = true;
+            this.rdoTCP.Text = "TCP";
+            this.rdoTCP.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(513, 303);
+            this.Controls.Add(this.rdoTCP);
+            this.Controls.Add(this.rdoHTTP);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.btnSubtract);
             this.Controls.Add(this.btnAdd);
@@ -136,6 +162,8 @@ namespace WCFClient
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnSubtract;
         private System.Windows.Forms.Label lblMessage;
+        private System.Windows.Forms.RadioButton rdoHTTP;
+        private System.Windows.Forms.RadioButton rdoTCP;
     }
 }
 
