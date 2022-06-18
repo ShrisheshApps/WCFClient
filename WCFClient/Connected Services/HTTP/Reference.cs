@@ -9,127 +9,161 @@
 //------------------------------------------------------------------------------
 
 namespace WCFClient.HTTP {
+    using System.Runtime.Serialization;
+    using System;
     
     
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="HTTP.ICalculate")]
-    public interface ICalculate {
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Student", Namespace="http://schemas.datacontract.org/2004/07/ServiceLibrary")]
+    [System.SerializableAttribute()]
+    public partial class Student : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICalculate/Add", ReplyAction="http://tempuri.org/ICalculate/AddResponse")]
-        double Add(double number1, double number2);
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICalculate/Add", ReplyAction="http://tempuri.org/ICalculate/AddResponse")]
-        System.Threading.Tasks.Task<double> AddAsync(double number1, double number2);
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CityField;
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICalculate/Subtract", ReplyAction="http://tempuri.org/ICalculate/SubtractResponse")]
-        double Subtract(double number1, double number2);
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string GenderField;
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICalculate/Subtract", ReplyAction="http://tempuri.org/ICalculate/SubtractResponse")]
-        System.Threading.Tasks.Task<double> SubtractAsync(double number1, double number2);
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICalculate/GetMessage", ReplyAction="http://tempuri.org/ICalculate/GetMessageResponse")]
-        string GetMessage(string message);
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICalculate/GetMessage", ReplyAction="http://tempuri.org/ICalculate/GetMessageResponse")]
-        System.Threading.Tasks.Task<string> GetMessageAsync(string message);
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string City {
+            get {
+                return this.CityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CityField, value) != true)) {
+                    this.CityField = value;
+                    this.RaisePropertyChanged("City");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Gender {
+            get {
+                return this.GenderField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GenderField, value) != true)) {
+                    this.GenderField = value;
+                    this.RaisePropertyChanged("Gender");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ICalculateChannel : WCFClient.HTTP.ICalculate, System.ServiceModel.IClientChannel {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="HTTP.IStudentInfo")]
+    public interface IStudentInfo {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentInfo/GetStudent", ReplyAction="http://tempuri.org/IStudentInfo/GetStudentResponse")]
+        WCFClient.HTTP.Student GetStudent(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentInfo/GetStudent", ReplyAction="http://tempuri.org/IStudentInfo/GetStudentResponse")]
+        System.Threading.Tasks.Task<WCFClient.HTTP.Student> GetStudentAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentInfo/SaveStudent", ReplyAction="http://tempuri.org/IStudentInfo/SaveStudentResponse")]
+        void SaveStudent(WCFClient.HTTP.Student student);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentInfo/SaveStudent", ReplyAction="http://tempuri.org/IStudentInfo/SaveStudentResponse")]
+        System.Threading.Tasks.Task SaveStudentAsync(WCFClient.HTTP.Student student);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IStudentInfoChannel : WCFClient.HTTP.IStudentInfo, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class CalculateClient : System.ServiceModel.ClientBase<WCFClient.HTTP.ICalculate>, WCFClient.HTTP.ICalculate {
+    public partial class StudentInfoClient : System.ServiceModel.ClientBase<WCFClient.HTTP.IStudentInfo>, WCFClient.HTTP.IStudentInfo {
         
-        public CalculateClient() {
+        public StudentInfoClient() {
         }
         
-        public CalculateClient(string endpointConfigurationName) : 
+        public StudentInfoClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public CalculateClient(string endpointConfigurationName, string remoteAddress) : 
+        public StudentInfoClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public CalculateClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public StudentInfoClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public CalculateClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public StudentInfoClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
-        public double Add(double number1, double number2) {
-            return base.Channel.Add(number1, number2);
+        public WCFClient.HTTP.Student GetStudent(int id) {
+            return base.Channel.GetStudent(id);
         }
         
-        public System.Threading.Tasks.Task<double> AddAsync(double number1, double number2) {
-            return base.Channel.AddAsync(number1, number2);
+        public System.Threading.Tasks.Task<WCFClient.HTTP.Student> GetStudentAsync(int id) {
+            return base.Channel.GetStudentAsync(id);
         }
         
-        public double Subtract(double number1, double number2) {
-            return base.Channel.Subtract(number1, number2);
+        public void SaveStudent(WCFClient.HTTP.Student student) {
+            base.Channel.SaveStudent(student);
         }
         
-        public System.Threading.Tasks.Task<double> SubtractAsync(double number1, double number2) {
-            return base.Channel.SubtractAsync(number1, number2);
-        }
-        
-        public string GetMessage(string message) {
-            return base.Channel.GetMessage(message);
-        }
-        
-        public System.Threading.Tasks.Task<string> GetMessageAsync(string message) {
-            return base.Channel.GetMessageAsync(message);
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="HTTP.IConfidential")]
-    public interface IConfidential {
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConfidential/PrivateMessage", ReplyAction="http://tempuri.org/IConfidential/PrivateMessageResponse")]
-        string PrivateMessage(string msg);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConfidential/PrivateMessage", ReplyAction="http://tempuri.org/IConfidential/PrivateMessageResponse")]
-        System.Threading.Tasks.Task<string> PrivateMessageAsync(string msg);
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IConfidentialChannel : WCFClient.HTTP.IConfidential, System.ServiceModel.IClientChannel {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ConfidentialClient : System.ServiceModel.ClientBase<WCFClient.HTTP.IConfidential>, WCFClient.HTTP.IConfidential {
-        
-        public ConfidentialClient() {
-        }
-        
-        public ConfidentialClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
-        }
-        
-        public ConfidentialClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
-        }
-        
-        public ConfidentialClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
-        }
-        
-        public ConfidentialClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
-        }
-        
-        public string PrivateMessage(string msg) {
-            return base.Channel.PrivateMessage(msg);
-        }
-        
-        public System.Threading.Tasks.Task<string> PrivateMessageAsync(string msg) {
-            return base.Channel.PrivateMessageAsync(msg);
+        public System.Threading.Tasks.Task SaveStudentAsync(WCFClient.HTTP.Student student) {
+            return base.Channel.SaveStudentAsync(student);
         }
     }
 }

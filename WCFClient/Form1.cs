@@ -5,39 +5,18 @@ namespace WCFClient
 {
     public partial class Form1 : Form
     {
-        HTTP.CalculateClient client = new HTTP.CalculateClient("BasicHttpBinding_ICalculate");
-        TCP.ConfidentialClient client2 = new TCP.ConfidentialClient("NetTcpBinding_IConfidential1");
+        HTTP.StudentInfoClient client = new HTTP.StudentInfoClient();
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void btnGet_Click(object sender, EventArgs e)
         {
-           
-            if ((!string.IsNullOrWhiteSpace(txtNumber1.Text)) && (!string.IsNullOrWhiteSpace(txtNumber2.Text)))
-            {
-                double sum = client.Add(Convert.ToDouble(txtNumber1.Text), Convert.ToDouble(txtNumber2.Text));
-                lblMessage.Text = client.GetMessage("The sum of numbers is " + sum.ToString());
-            }
-
-        }
-
-        private void btnSubtract_Click(object sender, EventArgs e)
-        {
-            
-            if ((!string.IsNullOrWhiteSpace(txtNumber1.Text)) && (!string.IsNullOrWhiteSpace(txtNumber2.Text)))
-            {
-                double subtract = client.Subtract(Convert.ToDouble(txtNumber1.Text), Convert.ToDouble(txtNumber2.Text));
-                lblMessage.Text = client.GetMessage("The difference of numbers is " + subtract.ToString());
-            }
-
-        }
-
-        private void btnMsg_Click(object sender, EventArgs e)
-        {
-            string msg = client2.PrivateMessage("JAMES007");
-            lblMessage.Text = msg;
+           HTTP.Student student= client.GetStudent(Convert.ToInt32( txtId.Text));
+            txtName.Text = student.Name;
+            txtGender.Text = student.Gender;
+            txtCity.Text = student.City;
         }
     }
 }
