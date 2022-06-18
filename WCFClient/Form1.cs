@@ -13,10 +13,21 @@ namespace WCFClient
 
         private void btnGet_Click(object sender, EventArgs e)
         {
-           HTTP.Student student= client.GetStudent(Convert.ToInt32( txtId.Text));
-            txtName.Text = student.Name;
-            txtGender.Text = student.Gender;
-            txtCity.Text = student.City;
+            if (!string.IsNullOrEmpty(txtId.Text))
+            {
+                HTTP.Student student = client.GetStudent(Convert.ToInt32(txtId.Text));
+                if (student != null)
+                {
+                    txtName.Text = student.Name;
+                    txtGender.Text = student.Gender;
+                    txtCity.Text = student.City;
+                }
+                else
+                {
+                    lblMsg.Text = "Data not found";
+                }
+            }
+           
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -28,6 +39,40 @@ namespace WCFClient
                 City = txtCity.Text
             };
             client.SaveStudent(student);
+        }
+
+        private void cboType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboType.SelectedIndex == 0)
+            {
+                foreach (Control c in this.Controls)
+                {
+                    if (c.Tag != null)
+                    {
+                        c.Visible = false;
+                    }
+                    if (c.Tag != null && (string)c.Tag=="regular")
+                    {
+                        c.Visible = true;
+                    }
+                }
+
+            }
+            if (cboType.SelectedIndex==1)
+            {
+                foreach (Control c in this.Controls)
+                {
+                    if (c.Tag != null)
+                    {
+                        c.Visible = false;
+                    }
+                    if (c.Tag != null && (string)c.Tag == "open")
+                    {
+                        c.Visible = true;
+                    }
+                }
+
+            }
         }
     }
 }
