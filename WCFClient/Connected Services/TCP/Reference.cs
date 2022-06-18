@@ -85,4 +85,51 @@ namespace WCFClient.TCP {
             return base.Channel.GetMessageAsync(message);
         }
     }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TCP.IConfidential")]
+    public interface IConfidential {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConfidential/PrivateMessage", ReplyAction="http://tempuri.org/IConfidential/PrivateMessageResponse")]
+        string PrivateMessage(string msg);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConfidential/PrivateMessage", ReplyAction="http://tempuri.org/IConfidential/PrivateMessageResponse")]
+        System.Threading.Tasks.Task<string> PrivateMessageAsync(string msg);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IConfidentialChannel : WCFClient.TCP.IConfidential, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ConfidentialClient : System.ServiceModel.ClientBase<WCFClient.TCP.IConfidential>, WCFClient.TCP.IConfidential {
+        
+        public ConfidentialClient() {
+        }
+        
+        public ConfidentialClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public ConfidentialClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ConfidentialClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ConfidentialClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public string PrivateMessage(string msg) {
+            return base.Channel.PrivateMessage(msg);
+        }
+        
+        public System.Threading.Tasks.Task<string> PrivateMessageAsync(string msg) {
+            return base.Channel.PrivateMessageAsync(msg);
+        }
+    }
 }

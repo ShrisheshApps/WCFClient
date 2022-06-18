@@ -5,9 +5,8 @@ namespace WCFClient
 {
     public partial class Form1 : Form
     {
-        //HTTP.CalculateClient client = new HTTP.CalculateClient("BasicHttpBinding_ICalculate");
-        TCP.CalculateClient client = new TCP.CalculateClient("NetTcpBinding_ICalculate1");
-
+        HTTP.CalculateClient client = new HTTP.CalculateClient("BasicHttpBinding_ICalculate");
+        TCP.ConfidentialClient client2 = new TCP.ConfidentialClient("NetTcpBinding_IConfidential1");
         public Form1()
         {
             InitializeComponent();
@@ -33,6 +32,12 @@ namespace WCFClient
                 lblMessage.Text = client.GetMessage("The difference of numbers is " + subtract.ToString());
             }
 
+        }
+
+        private void btnMsg_Click(object sender, EventArgs e)
+        {
+            string msg = client2.PrivateMessage("JAMES007");
+            lblMessage.Text = msg;
         }
     }
 }

@@ -36,8 +36,7 @@ namespace WCFClient
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnSubtract = new System.Windows.Forms.Button();
             this.lblMessage = new System.Windows.Forms.Label();
-            this.rdoHTTP = new System.Windows.Forms.RadioButton();
-            this.rdoTCP = new System.Windows.Forms.RadioButton();
+            this.btnMsg = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -81,7 +80,7 @@ namespace WCFClient
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(259, 239);
+            this.btnAdd.Location = new System.Drawing.Point(126, 205);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(109, 41);
             this.btnAdd.TabIndex = 2;
@@ -92,7 +91,7 @@ namespace WCFClient
             // btnSubtract
             // 
             this.btnSubtract.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubtract.Location = new System.Drawing.Point(382, 239);
+            this.btnSubtract.Location = new System.Drawing.Point(249, 205);
             this.btnSubtract.Name = "btnSubtract";
             this.btnSubtract.Size = new System.Drawing.Size(109, 41);
             this.btnSubtract.TabIndex = 2;
@@ -110,36 +109,24 @@ namespace WCFClient
             this.lblMessage.Size = new System.Drawing.Size(0, 29);
             this.lblMessage.TabIndex = 3;
             // 
-            // rdoHTTP
+            // btnMsg
             // 
-            this.rdoHTTP.AutoSize = true;
-            this.rdoHTTP.Location = new System.Drawing.Point(64, 184);
-            this.rdoHTTP.Name = "rdoHTTP";
-            this.rdoHTTP.Size = new System.Drawing.Size(66, 21);
-            this.rdoHTTP.TabIndex = 4;
-            this.rdoHTTP.TabStop = true;
-            this.rdoHTTP.Text = "HTTP";
-            this.rdoHTTP.UseVisualStyleBackColor = true;
-            // 
-            // rdoTCP
-            // 
-            this.rdoTCP.AutoSize = true;
-            this.rdoTCP.Location = new System.Drawing.Point(180, 184);
-            this.rdoTCP.Name = "rdoTCP";
-            this.rdoTCP.Size = new System.Drawing.Size(56, 21);
-            this.rdoTCP.TabIndex = 4;
-            this.rdoTCP.TabStop = true;
-            this.rdoTCP.Text = "TCP";
-            this.rdoTCP.UseVisualStyleBackColor = true;
+            this.btnMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMsg.Location = new System.Drawing.Point(373, 205);
+            this.btnMsg.Name = "btnMsg";
+            this.btnMsg.Size = new System.Drawing.Size(109, 41);
+            this.btnMsg.TabIndex = 2;
+            this.btnMsg.Text = "Get Msg";
+            this.btnMsg.UseVisualStyleBackColor = true;
+            this.btnMsg.Click += new System.EventHandler(this.btnMsg_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(513, 303);
-            this.Controls.Add(this.rdoTCP);
-            this.Controls.Add(this.rdoHTTP);
+            this.ClientSize = new System.Drawing.Size(643, 303);
             this.Controls.Add(this.lblMessage);
+            this.Controls.Add(this.btnMsg);
             this.Controls.Add(this.btnSubtract);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtNumber2);
@@ -162,8 +149,7 @@ namespace WCFClient
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnSubtract;
         private System.Windows.Forms.Label lblMessage;
-        private System.Windows.Forms.RadioButton rdoHTTP;
-        private System.Windows.Forms.RadioButton rdoTCP;
+        private System.Windows.Forms.Button btnMsg;
     }
 }
 
