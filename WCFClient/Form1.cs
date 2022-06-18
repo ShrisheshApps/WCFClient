@@ -32,13 +32,20 @@ namespace WCFClient
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            HTTP.Student student = new HTTP.Student()
+            if (string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtGender.Text) || string.IsNullOrEmpty(txtCity.Text) || string.IsNullOrEmpty(txtRegularFees.Text) || string.IsNullOrEmpty(txtHours.Text) || string.IsNullOrEmpty(txtRate.Text))
             {
-                Name = txtName.Text,
-                Gender = txtGender.Text,
-                City = txtCity.Text
-            };
-            client.SaveStudent(student);
+                lblMsg.Text = "Please fill all the data.";
+            }
+            else
+            {
+                HTTP.Student student = new HTTP.Student()
+                {
+                    Name = txtName.Text,
+                    Gender = txtGender.Text,
+                    City = txtCity.Text
+                };
+                client.SaveStudent(student);
+            }
         }
 
         private void cboType_SelectedIndexChanged(object sender, EventArgs e)
@@ -71,7 +78,6 @@ namespace WCFClient
                         c.Visible = true;
                     }
                 }
-
             }
         }
     }
