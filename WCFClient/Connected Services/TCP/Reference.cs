@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WCFClient.HTTPBasedCalculator {
+namespace WCFClient.TCP {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="HTTPBasedCalculator.ICalculate")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TCP.ICalculate")]
     public interface ICalculate {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICalculate/Add", ReplyAction="http://tempuri.org/ICalculate/AddResponse")]
@@ -35,12 +35,12 @@ namespace WCFClient.HTTPBasedCalculator {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ICalculateChannel : WCFClient.HTTPBasedCalculator.ICalculate, System.ServiceModel.IClientChannel {
+    public interface ICalculateChannel : WCFClient.TCP.ICalculate, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class CalculateClient : System.ServiceModel.ClientBase<WCFClient.HTTPBasedCalculator.ICalculate>, WCFClient.HTTPBasedCalculator.ICalculate {
+    public partial class CalculateClient : System.ServiceModel.ClientBase<WCFClient.TCP.ICalculate>, WCFClient.TCP.ICalculate {
         
         public CalculateClient() {
         }

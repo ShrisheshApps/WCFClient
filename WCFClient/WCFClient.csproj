@@ -47,7 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\HTTPBasedCalculator\Reference.cs">
+    <Compile Include="Connected Services\HTTP\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\TCP\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -72,11 +77,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Connected Services\HTTPBasedCalculator\CalculatorService.wsdl" />
-    <None Include="Connected Services\HTTPBasedCalculator\item.xsd">
+    <None Include="Connected Services\HTTP\service.wsdl" />
+    <None Include="Connected Services\HTTP\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\HTTPBasedCalculator\item1.xsd">
+    <None Include="Connected Services\HTTP\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\TCP\service.wsdl" />
+    <None Include="Connected Services\TCP\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\TCP\service1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">
@@ -96,19 +108,29 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\HTTPBasedCalculator\" />
+    <WCFMetadataStorage Include="Connected Services\HTTP\" />
+    <WCFMetadataStorage Include="Connected Services\TCP\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\HTTPBasedCalculator\item.disco" />
+    <None Include="Connected Services\HTTP\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\HTTPBasedCalculator\configuration91.svcinfo" />
+    <None Include="Connected Services\HTTP\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\HTTPBasedCalculator\configuration.svcinfo" />
+    <None Include="Connected Services\HTTP\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\HTTPBasedCalculator\Reference.svcmap">
+    <None Include="Connected Services\TCP\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\TCP\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\TCP\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
