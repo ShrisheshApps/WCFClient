@@ -9,6 +9,8 @@ namespace WCFClient
         public Form1()
         {
             InitializeComponent();
+            btnGet.Visible = false;
+            btnSave.Visible = false;
         }
 
         private void btnGet_Click(object sender, EventArgs e)
@@ -81,6 +83,8 @@ namespace WCFClient
 
         private void cboType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            btnGet.Visible = true;
+            btnSave.Visible = true;
             lblMsg.Text = String.Empty;
             if (cboType.SelectedIndex == 0)
             {
