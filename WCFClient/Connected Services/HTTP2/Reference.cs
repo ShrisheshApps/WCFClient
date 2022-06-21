@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WCFClient.HTTP {
+namespace WCFClient.HTTP2 {
     using System.Runtime.Serialization;
     using System;
     
@@ -17,8 +17,8 @@ namespace WCFClient.HTTP {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Student", Namespace="www.Shrishesh.com/Year2022")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WCFClient.HTTP.RegularStudent))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WCFClient.HTTP.OpenStudent))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WCFClient.HTTP2.RegularStudent))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WCFClient.HTTP2.OpenStudent))]
     public partial class Student : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -35,9 +35,6 @@ namespace WCFClient.HTTP {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CityField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private WCFClient.HTTP.StudentType TypeField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -101,19 +98,6 @@ namespace WCFClient.HTTP {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
-        public WCFClient.HTTP.StudentType Type {
-            get {
-                return this.TypeField;
-            }
-            set {
-                if ((this.TypeField.Equals(value) != true)) {
-                    this.TypeField = value;
-                    this.RaisePropertyChanged("Type");
-                }
-            }
-        }
-        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -128,7 +112,7 @@ namespace WCFClient.HTTP {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="RegularStudent", Namespace="http://schemas.datacontract.org/2004/07/ServiceLibrary")]
     [System.SerializableAttribute()]
-    public partial class RegularStudent : WCFClient.HTTP.Student {
+    public partial class RegularStudent : WCFClient.HTTP2.Student {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int TotalFeesField;
@@ -151,7 +135,7 @@ namespace WCFClient.HTTP {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="OpenStudent", Namespace="http://schemas.datacontract.org/2004/07/ServiceLibrary")]
     [System.SerializableAttribute()]
-    public partial class OpenStudent : WCFClient.HTTP.Student {
+    public partial class OpenStudent : WCFClient.HTTP2.Student {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int HourlyRateField;
@@ -186,41 +170,30 @@ namespace WCFClient.HTTP {
         }
     }
     
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="StudentType", Namespace="http://schemas.datacontract.org/2004/07/ServiceLibrary")]
-    public enum StudentType : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Regular = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Open = 2,
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="HTTP.IStudentInfo")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="HTTP2.IStudentInfo")]
     public interface IStudentInfo {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentInfo/GetStudent", ReplyAction="http://tempuri.org/IStudentInfo/GetStudentResponse")]
-        WCFClient.HTTP.Student GetStudent(int id);
+        WCFClient.HTTP2.Student GetStudent(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentInfo/GetStudent", ReplyAction="http://tempuri.org/IStudentInfo/GetStudentResponse")]
-        System.Threading.Tasks.Task<WCFClient.HTTP.Student> GetStudentAsync(int id);
+        System.Threading.Tasks.Task<WCFClient.HTTP2.Student> GetStudentAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentInfo/SaveStudent", ReplyAction="http://tempuri.org/IStudentInfo/SaveStudentResponse")]
-        void SaveStudent(WCFClient.HTTP.Student student);
+        void SaveStudent(WCFClient.HTTP2.Student student);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentInfo/SaveStudent", ReplyAction="http://tempuri.org/IStudentInfo/SaveStudentResponse")]
-        System.Threading.Tasks.Task SaveStudentAsync(WCFClient.HTTP.Student student);
+        System.Threading.Tasks.Task SaveStudentAsync(WCFClient.HTTP2.Student student);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IStudentInfoChannel : WCFClient.HTTP.IStudentInfo, System.ServiceModel.IClientChannel {
+    public interface IStudentInfoChannel : WCFClient.HTTP2.IStudentInfo, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class StudentInfoClient : System.ServiceModel.ClientBase<WCFClient.HTTP.IStudentInfo>, WCFClient.HTTP.IStudentInfo {
+    public partial class StudentInfoClient : System.ServiceModel.ClientBase<WCFClient.HTTP2.IStudentInfo>, WCFClient.HTTP2.IStudentInfo {
         
         public StudentInfoClient() {
         }
@@ -241,19 +214,19 @@ namespace WCFClient.HTTP {
                 base(binding, remoteAddress) {
         }
         
-        public WCFClient.HTTP.Student GetStudent(int id) {
+        public WCFClient.HTTP2.Student GetStudent(int id) {
             return base.Channel.GetStudent(id);
         }
         
-        public System.Threading.Tasks.Task<WCFClient.HTTP.Student> GetStudentAsync(int id) {
+        public System.Threading.Tasks.Task<WCFClient.HTTP2.Student> GetStudentAsync(int id) {
             return base.Channel.GetStudentAsync(id);
         }
         
-        public void SaveStudent(WCFClient.HTTP.Student student) {
+        public void SaveStudent(WCFClient.HTTP2.Student student) {
             base.Channel.SaveStudent(student);
         }
         
-        public System.Threading.Tasks.Task SaveStudentAsync(WCFClient.HTTP.Student student) {
+        public System.Threading.Tasks.Task SaveStudentAsync(WCFClient.HTTP2.Student student) {
             return base.Channel.SaveStudentAsync(student);
         }
     }

@@ -67,7 +67,7 @@ namespace WCFClient
             this.txtId.Multiline = true;
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(158, 32);
-            this.txtId.TabIndex = 0;
+            this.txtId.TabIndex = 2;
             // 
             // label2
             // 
@@ -86,7 +86,7 @@ namespace WCFClient
             this.txtName.Multiline = true;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(158, 32);
-            this.txtName.TabIndex = 1;
+            this.txtName.TabIndex = 3;
             // 
             // btnGet
             // 
@@ -94,7 +94,7 @@ namespace WCFClient
             this.btnGet.Location = new System.Drawing.Point(484, 244);
             this.btnGet.Name = "btnGet";
             this.btnGet.Size = new System.Drawing.Size(136, 41);
-            this.btnGet.TabIndex = 2;
+            this.btnGet.TabIndex = 10;
             this.btnGet.Text = "Get Student";
             this.btnGet.UseVisualStyleBackColor = true;
             this.btnGet.Click += new System.EventHandler(this.btnGet_Click);
@@ -116,7 +116,7 @@ namespace WCFClient
             this.txtGender.Multiline = true;
             this.txtGender.Name = "txtGender";
             this.txtGender.Size = new System.Drawing.Size(158, 32);
-            this.txtGender.TabIndex = 0;
+            this.txtGender.TabIndex = 4;
             // 
             // label4
             // 
@@ -135,7 +135,7 @@ namespace WCFClient
             this.txtCity.Multiline = true;
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(158, 32);
-            this.txtCity.TabIndex = 1;
+            this.txtCity.TabIndex = 5;
             // 
             // btnSave
             // 
@@ -143,7 +143,7 @@ namespace WCFClient
             this.btnSave.Location = new System.Drawing.Point(342, 244);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(136, 41);
-            this.btnSave.TabIndex = 2;
+            this.btnSave.TabIndex = 9;
             this.btnSave.Text = "Save Student";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -166,7 +166,7 @@ namespace WCFClient
             this.txtHours.Multiline = true;
             this.txtHours.Name = "txtHours";
             this.txtHours.Size = new System.Drawing.Size(158, 32);
-            this.txtHours.TabIndex = 0;
+            this.txtHours.TabIndex = 7;
             this.txtHours.Tag = "open";
             // 
             // label6
@@ -187,7 +187,7 @@ namespace WCFClient
             this.txtRate.Multiline = true;
             this.txtRate.Name = "txtRate";
             this.txtRate.Size = new System.Drawing.Size(158, 32);
-            this.txtRate.TabIndex = 1;
+            this.txtRate.TabIndex = 8;
             this.txtRate.Tag = "open";
             // 
             // label7
@@ -208,7 +208,7 @@ namespace WCFClient
             this.txtRegularFees.Multiline = true;
             this.txtRegularFees.Name = "txtRegularFees";
             this.txtRegularFees.Size = new System.Drawing.Size(158, 32);
-            this.txtRegularFees.TabIndex = 0;
+            this.txtRegularFees.TabIndex = 6;
             this.txtRegularFees.Tag = "regular";
             // 
             // cboType
@@ -221,7 +221,7 @@ namespace WCFClient
             this.cboType.Location = new System.Drawing.Point(442, 27);
             this.cboType.Name = "cboType";
             this.cboType.Size = new System.Drawing.Size(158, 30);
-            this.cboType.TabIndex = 3;
+            this.cboType.TabIndex = 1;
             this.cboType.SelectedIndexChanged += new System.EventHandler(this.cboType_SelectedIndexChanged);
             // 
             // label8
@@ -270,6 +270,7 @@ namespace WCFClient
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "WCF Client";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

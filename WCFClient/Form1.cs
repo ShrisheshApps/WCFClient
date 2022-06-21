@@ -21,6 +21,18 @@ namespace WCFClient
                     txtName.Text = student.Name;
                     txtGender.Text = student.Gender;
                     txtCity.Text = student.City;
+                    
+                    if ( student.Type == HTTP.StudentType.Regular)
+                    {
+                        cboType.SelectedIndex = 0;
+                        txtRegularFees.Text = ((HTTP.RegularStudent)student).TotalFees.ToString();
+                    }
+                    if (student.Type == HTTP.StudentType.Open)
+                    {
+                        cboType.SelectedIndex = 1;
+                        txtHours.Text = ((HTTP.OpenStudent)student).Hours.ToString();
+                        txtRate.Text = ((HTTP.OpenStudent)student).HourlyRate.ToString();
+                    }
                 }
                 else
                 {
@@ -32,19 +44,38 @@ namespace WCFClient
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtGender.Text) || string.IsNullOrEmpty(txtCity.Text) || string.IsNullOrEmpty(txtRegularFees.Text) || string.IsNullOrEmpty(txtHours.Text) || string.IsNullOrEmpty(txtRate.Text))
+            HTTP.Student student = null;
+            if (string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtGender.Text) || string.IsNullOrEmpty(txtCity.Text))
             {
                 lblMsg.Text = "Please fill all the data.";
             }
             else
             {
-                HTTP.Student student = new HTTP.Student()
+                if (cboType.SelectedIndex ==0)
                 {
-                    Name = txtName.Text,
-                    Gender = txtGender.Text,
-                    City = txtCity.Text
-                };
+                    student = new HTTP.RegularStudent()
+                    {
+                        Name = txtName.Text,
+                        Gender = txtGender.Text,
+                        City = txtCity.Text,
+                        TotalFees = Convert.ToInt32(txtRegularFees.Text),
+                        Type = HTTP.StudentType.Regular
+                    };
+                }
+                if (cboType.SelectedIndex == 1)
+                {
+                    student = new HTTP.OpenStudent()
+                    {
+                        Type = HTTP.StudentType.Open,
+                        Name = txtName.Text,
+                        Gender = txtGender.Text,
+                        City = txtCity.Text,
+                        HourlyRate = Convert.ToInt32(txtRate.Text),
+                        Hours = Convert.ToInt32(txtHours.Text)
+                    };
+                }
                 client.SaveStudent(student);
+                lblMsg.Text = "Saved the data.";
             }
         }
 
@@ -79,6 +110,11 @@ namespace WCFClient
                     }
                 }
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
