@@ -81,6 +81,7 @@ namespace WCFClient
 
         private void cboType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lblMsg.Text = String.Empty;
             if (cboType.SelectedIndex == 0)
             {
                 foreach (Control c in this.Controls)
