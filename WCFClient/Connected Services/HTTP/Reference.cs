@@ -15,29 +15,21 @@ namespace WCFClient.HTTP {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Student", Namespace="www.Shrishesh.com/Year2022")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Student", Namespace="http://schemas.datacontract.org/2004/07/ServiceLibrary")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WCFClient.HTTP.RegularStudent))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WCFClient.HTTP.OpenStudent))]
     public partial class Student : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
+        private string CityField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string GenderField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CityField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private WCFClient.HTTP.StudentType TypeField;
+        private string NameField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -50,14 +42,27 @@ namespace WCFClient.HTTP {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
+        public string City {
             get {
-                return this.IdField;
+                return this.CityField;
             }
             set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
+                if ((object.ReferenceEquals(this.CityField, value) != true)) {
+                    this.CityField = value;
+                    this.RaisePropertyChanged("City");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Gender {
+            get {
+                return this.GenderField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GenderField, value) != true)) {
+                    this.GenderField = value;
+                    this.RaisePropertyChanged("Gender");
                 }
             }
         }
@@ -75,45 +80,6 @@ namespace WCFClient.HTTP {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-        public string Gender {
-            get {
-                return this.GenderField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.GenderField, value) != true)) {
-                    this.GenderField = value;
-                    this.RaisePropertyChanged("Gender");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-        public string City {
-            get {
-                return this.CityField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CityField, value) != true)) {
-                    this.CityField = value;
-                    this.RaisePropertyChanged("City");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
-        public WCFClient.HTTP.StudentType Type {
-            get {
-                return this.TypeField;
-            }
-            set {
-                if ((this.TypeField.Equals(value) != true)) {
-                    this.TypeField = value;
-                    this.RaisePropertyChanged("Type");
-                }
-            }
-        }
-        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -124,137 +90,100 @@ namespace WCFClient.HTTP {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="RegularStudent", Namespace="http://schemas.datacontract.org/2004/07/ServiceLibrary")]
-    [System.SerializableAttribute()]
-    public partial class RegularStudent : WCFClient.HTTP.Student {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int TotalFeesField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int TotalFees {
-            get {
-                return this.TotalFeesField;
-            }
-            set {
-                if ((this.TotalFeesField.Equals(value) != true)) {
-                    this.TotalFeesField = value;
-                    this.RaisePropertyChanged("TotalFees");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="OpenStudent", Namespace="http://schemas.datacontract.org/2004/07/ServiceLibrary")]
-    [System.SerializableAttribute()]
-    public partial class OpenStudent : WCFClient.HTTP.Student {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int HourlyRateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int HoursField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int HourlyRate {
-            get {
-                return this.HourlyRateField;
-            }
-            set {
-                if ((this.HourlyRateField.Equals(value) != true)) {
-                    this.HourlyRateField = value;
-                    this.RaisePropertyChanged("HourlyRate");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Hours {
-            get {
-                return this.HoursField;
-            }
-            set {
-                if ((this.HoursField.Equals(value) != true)) {
-                    this.HoursField = value;
-                    this.RaisePropertyChanged("Hours");
-                }
-            }
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="StudentType", Namespace="http://schemas.datacontract.org/2004/07/ServiceLibrary")]
-    public enum StudentType : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Regular = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Open = 2,
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="HTTP.IStudentInfo")]
-    public interface IStudentInfo {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="HTTP.IStudentService")]
+    public interface IStudentService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentInfo/GetStudent", ReplyAction="http://tempuri.org/IStudentInfo/GetStudentResponse")]
-        WCFClient.HTTP.Student GetStudent(int id);
+        // CODEGEN: Generating message contract since the wrapper name (StudentRequest) of message StudentRequest does not match the default value (GetStudent)
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentService/GetStudent", ReplyAction="http://tempuri.org/IStudentService/GetStudentResponse")]
+        WCFClient.HTTP.StudentResponse GetStudent(WCFClient.HTTP.StudentRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentInfo/GetStudent", ReplyAction="http://tempuri.org/IStudentInfo/GetStudentResponse")]
-        System.Threading.Tasks.Task<WCFClient.HTTP.Student> GetStudentAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentInfo/SaveStudent", ReplyAction="http://tempuri.org/IStudentInfo/SaveStudentResponse")]
-        void SaveStudent(WCFClient.HTTP.Student student);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentInfo/SaveStudent", ReplyAction="http://tempuri.org/IStudentInfo/SaveStudentResponse")]
-        System.Threading.Tasks.Task SaveStudentAsync(WCFClient.HTTP.Student student);
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IStudentInfoChannel : WCFClient.HTTP.IStudentInfo, System.ServiceModel.IClientChannel {
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentService/GetStudent", ReplyAction="http://tempuri.org/IStudentService/GetStudentResponse")]
+        System.Threading.Tasks.Task<WCFClient.HTTP.StudentResponse> GetStudentAsync(WCFClient.HTTP.StudentRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class StudentInfoClient : System.ServiceModel.ClientBase<WCFClient.HTTP.IStudentInfo>, WCFClient.HTTP.IStudentInfo {
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="StudentRequest", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class StudentRequest {
         
-        public StudentInfoClient() {
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public int Id;
+        
+        public StudentRequest() {
         }
         
-        public StudentInfoClient(string endpointConfigurationName) : 
+        public StudentRequest(int Id) {
+            this.Id = Id;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="StudentResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class StudentResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public WCFClient.HTTP.Student student;
+        
+        public StudentResponse() {
+        }
+        
+        public StudentResponse(WCFClient.HTTP.Student student) {
+            this.student = student;
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IStudentServiceChannel : WCFClient.HTTP.IStudentService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class StudentServiceClient : System.ServiceModel.ClientBase<WCFClient.HTTP.IStudentService>, WCFClient.HTTP.IStudentService {
+        
+        public StudentServiceClient() {
+        }
+        
+        public StudentServiceClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public StudentInfoClient(string endpointConfigurationName, string remoteAddress) : 
+        public StudentServiceClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public StudentInfoClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public StudentServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public StudentInfoClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public StudentServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
-        public WCFClient.HTTP.Student GetStudent(int id) {
-            return base.Channel.GetStudent(id);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        WCFClient.HTTP.StudentResponse WCFClient.HTTP.IStudentService.GetStudent(WCFClient.HTTP.StudentRequest request) {
+            return base.Channel.GetStudent(request);
         }
         
-        public System.Threading.Tasks.Task<WCFClient.HTTP.Student> GetStudentAsync(int id) {
-            return base.Channel.GetStudentAsync(id);
+        public WCFClient.HTTP.Student GetStudent(int Id) {
+            WCFClient.HTTP.StudentRequest inValue = new WCFClient.HTTP.StudentRequest();
+            inValue.Id = Id;
+            WCFClient.HTTP.StudentResponse retVal = ((WCFClient.HTTP.IStudentService)(this)).GetStudent(inValue);
+            return retVal.student;
         }
         
-        public void SaveStudent(WCFClient.HTTP.Student student) {
-            base.Channel.SaveStudent(student);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<WCFClient.HTTP.StudentResponse> WCFClient.HTTP.IStudentService.GetStudentAsync(WCFClient.HTTP.StudentRequest request) {
+            return base.Channel.GetStudentAsync(request);
         }
         
-        public System.Threading.Tasks.Task SaveStudentAsync(WCFClient.HTTP.Student student) {
-            return base.Channel.SaveStudentAsync(student);
+        public System.Threading.Tasks.Task<WCFClient.HTTP.StudentResponse> GetStudentAsync(int Id) {
+            WCFClient.HTTP.StudentRequest inValue = new WCFClient.HTTP.StudentRequest();
+            inValue.Id = Id;
+            return ((WCFClient.HTTP.IStudentService)(this)).GetStudentAsync(inValue);
         }
     }
 }

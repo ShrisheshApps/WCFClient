@@ -4,55 +4,39 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8001/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8001/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:8001/?xsd=xsd2" namespace="www.Shrishesh.com/Year2022" />
-      <xsd:import schemaLocation="http://localhost:8001/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ServiceLibrary" />
+      <xsd:import schemaLocation="http://localhost:8001/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ServiceLibrary" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IStudentInfo_GetStudent_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetStudent" />
+  <wsdl:message name="StudentRequest">
+    <wsdl:part name="parameters" element="tns:StudentRequest" />
   </wsdl:message>
-  <wsdl:message name="IStudentInfo_GetStudent_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetStudentResponse" />
+  <wsdl:message name="StudentRequest_Headers">
+    <wsdl:part name="Id" element="tns:Id" />
   </wsdl:message>
-  <wsdl:message name="IStudentInfo_SaveStudent_InputMessage">
-    <wsdl:part name="parameters" element="tns:SaveStudent" />
+  <wsdl:message name="StudentResponse">
+    <wsdl:part name="parameters" element="tns:StudentResponse" />
   </wsdl:message>
-  <wsdl:message name="IStudentInfo_SaveStudent_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SaveStudentResponse" />
-  </wsdl:message>
-  <wsdl:portType name="IStudentInfo">
+  <wsdl:portType name="IStudentService">
     <wsdl:operation name="GetStudent">
-      <wsdl:input wsaw:Action="http://tempuri.org/IStudentInfo/GetStudent" message="tns:IStudentInfo_GetStudent_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IStudentInfo/GetStudentResponse" message="tns:IStudentInfo_GetStudent_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="SaveStudent">
-      <wsdl:input wsaw:Action="http://tempuri.org/IStudentInfo/SaveStudent" message="tns:IStudentInfo_SaveStudent_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IStudentInfo/SaveStudentResponse" message="tns:IStudentInfo_SaveStudent_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IStudentService/GetStudent" name="StudentRequest" message="tns:StudentRequest" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStudentService/GetStudentResponse" name="StudentResponse" message="tns:StudentResponse" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="BasicHttpBinding_IStudentInfo" type="tns:IStudentInfo">
+  <wsdl:binding name="BasicHttpBinding_IStudentService" type="tns:IStudentService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetStudent">
-      <soap:operation soapAction="http://tempuri.org/IStudentInfo/GetStudent" style="document" />
-      <wsdl:input>
+      <soap:operation soapAction="http://tempuri.org/IStudentService/GetStudent" style="document" />
+      <wsdl:input name="StudentRequest">
+        <soap:header message="tns:StudentRequest_Headers" part="Id" use="literal" />
         <soap:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SaveStudent">
-      <soap:operation soapAction="http://tempuri.org/IStudentInfo/SaveStudent" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
+      <wsdl:output name="StudentResponse">
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="StudentService">
-    <wsdl:port name="BasicHttpBinding_IStudentInfo" binding="tns:BasicHttpBinding_IStudentInfo">
+    <wsdl:port name="BasicHttpBinding_IStudentService" binding="tns:BasicHttpBinding_IStudentService">
       <soap:address location="http://localhost:8001/ep1" />
     </wsdl:port>
   </wsdl:service>

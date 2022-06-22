@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FC5D55C6-E216-4113-8A45-E9613A061518}</ProjectGuid>
+    <ProjectGuid>{B000430F-C32F-4D61-B139-CB062B8A5501}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>WCFClient</RootNamespace>
     <AssemblyName>WCFClient</AssemblyName>
@@ -81,11 +81,11 @@
     <None Include="Connected Services\HTTP\item2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\HTTP\item3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\HTTP\StudentService.wsdl" />
     <None Include="Connected Services\HTTP\WCFClient.HTTP.Student.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HTTP\WCFClient.HTTP.StudentResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
