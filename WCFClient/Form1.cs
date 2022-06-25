@@ -22,8 +22,8 @@ namespace WCFClient
             HTTP.StudentServiceClient client = new HTTP.StudentServiceClient();
             HTTP.StudentRequest studentRequest = new HTTP.StudentRequest();
             studentRequest.Id = 102;
-            HTTP.Student student = client.GetStudent(studentRequest.Id);
-            string result = "Name: " + student.Name + "\nGender: " + student.Gender + "\nCity: " + student.City;
+            string Name = client.GetStudent(studentRequest.Id, out string Gender, out string City);
+            string result = "\nName: " + Name +  "\nGender: " + Gender + "\nCity: " + City;
             label1.Text = result;
         }
     }

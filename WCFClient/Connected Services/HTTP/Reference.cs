@@ -9,102 +9,22 @@
 //------------------------------------------------------------------------------
 
 namespace WCFClient.HTTP {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Student", Namespace="http://schemas.datacontract.org/2004/07/ServiceLibrary")]
-    [System.SerializableAttribute()]
-    public partial class Student : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CityField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string GenderField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string City {
-            get {
-                return this.CityField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CityField, value) != true)) {
-                    this.CityField = value;
-                    this.RaisePropertyChanged("City");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Gender {
-            get {
-                return this.GenderField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.GenderField, value) != true)) {
-                    this.GenderField = value;
-                    this.RaisePropertyChanged("Gender");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="HTTP.IStudentService")]
     public interface IStudentService {
         
-        // CODEGEN: Generating message contract since the wrapper name (StudentRequest) of message StudentRequest does not match the default value (GetStudent)
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentService/GetStudent", ReplyAction="http://tempuri.org/IStudentService/GetStudentResponse")]
         WCFClient.HTTP.StudentResponse GetStudent(WCFClient.HTTP.StudentRequest request);
         
+        // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentService/GetStudent", ReplyAction="http://tempuri.org/IStudentService/GetStudentResponse")]
         System.Threading.Tasks.Task<WCFClient.HTTP.StudentResponse> GetStudentAsync(WCFClient.HTTP.StudentRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="StudentRequest", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
     public partial class StudentRequest {
         
@@ -121,18 +41,25 @@ namespace WCFClient.HTTP {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="StudentResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
     public partial class StudentResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public WCFClient.HTTP.Student student;
+        public string Name;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public string Gender;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        public string City;
         
         public StudentResponse() {
         }
         
-        public StudentResponse(WCFClient.HTTP.Student student) {
-            this.student = student;
+        public StudentResponse(string Name, string Gender, string City) {
+            this.Name = Name;
+            this.Gender = Gender;
+            this.City = City;
         }
     }
     
@@ -168,22 +95,17 @@ namespace WCFClient.HTTP {
             return base.Channel.GetStudent(request);
         }
         
-        public WCFClient.HTTP.Student GetStudent(int Id) {
+        public string GetStudent(int Id, out string Gender, out string City) {
             WCFClient.HTTP.StudentRequest inValue = new WCFClient.HTTP.StudentRequest();
             inValue.Id = Id;
             WCFClient.HTTP.StudentResponse retVal = ((WCFClient.HTTP.IStudentService)(this)).GetStudent(inValue);
-            return retVal.student;
+            Gender = retVal.Gender;
+            City = retVal.City;
+            return retVal.Name;
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<WCFClient.HTTP.StudentResponse> WCFClient.HTTP.IStudentService.GetStudentAsync(WCFClient.HTTP.StudentRequest request) {
+        public System.Threading.Tasks.Task<WCFClient.HTTP.StudentResponse> GetStudentAsync(WCFClient.HTTP.StudentRequest request) {
             return base.Channel.GetStudentAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<WCFClient.HTTP.StudentResponse> GetStudentAsync(int Id) {
-            WCFClient.HTTP.StudentRequest inValue = new WCFClient.HTTP.StudentRequest();
-            inValue.Id = Id;
-            return ((WCFClient.HTTP.IStudentService)(this)).GetStudentAsync(inValue);
         }
     }
 }
