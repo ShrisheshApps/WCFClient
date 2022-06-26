@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WCFClient
@@ -20,11 +13,17 @@ namespace WCFClient
         private void btnGet_Click(object sender, EventArgs e)
         {
             HTTP.StudentServiceClient client = new HTTP.StudentServiceClient();
-            HTTP.StudentRequest studentRequest = new HTTP.StudentRequest();
-            studentRequest.Id = 102;
-            string Name = client.GetStudent(studentRequest.Id, out string Gender, out string City);
-            string result = "\nName: " + Name +  "\nGender: " + Gender + "\nCity: " + City;
-            label1.Text = result;
+            HTTP.StudentRequest request = new HTTP.StudentRequest();
+            request.StudentId = Convert.ToInt32(textBoxID.Text);
+            request.StudentKey = "ABJ-KEY";
+            // the out parameters are properties of StudentResponse
+            int Id = client.GetStudent(request.StudentKey, request.StudentId, out string Name, out string Gender, out string City, out HTTP.StudentType Type,out int RegularFees, out int CourseHours, out int HourlyRate);
+
+            string data =   "\nID: " + Id + "\nName: " + Name +
+                            "\nGender: " + Gender + "\nCity: " + City +
+                            "\nType: " + Type + "\nRegularFees: " + RegularFees +
+                            "\nCourseHours: " + CourseHours + "\nHourlyRate: " + HourlyRate;
+            label1.Text = data;
         }
     }
 }

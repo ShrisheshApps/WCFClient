@@ -4,13 +4,14 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8001/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8001/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8001/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ServiceLibrary" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="StudentRequest">
     <wsdl:part name="parameters" element="tns:StudentRequest" />
   </wsdl:message>
   <wsdl:message name="StudentRequest_Headers">
-    <wsdl:part name="Id" element="tns:Id" />
+    <wsdl:part name="StudentKey" element="tns:StudentKey" />
   </wsdl:message>
   <wsdl:message name="StudentResponse">
     <wsdl:part name="parameters" element="tns:StudentResponse" />
@@ -26,7 +27,7 @@
     <wsdl:operation name="GetStudent">
       <soap:operation soapAction="http://tempuri.org/IStudentService/GetStudent" style="document" />
       <wsdl:input name="StudentRequest">
-        <soap:header message="tns:StudentRequest_Headers" part="Id" use="literal" />
+        <soap:header message="tns:StudentRequest_Headers" part="StudentKey" use="literal" />
         <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output name="StudentResponse">

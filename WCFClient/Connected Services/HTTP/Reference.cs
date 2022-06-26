@@ -9,7 +9,19 @@
 //------------------------------------------------------------------------------
 
 namespace WCFClient.HTTP {
+    using System.Runtime.Serialization;
     
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StudentType", Namespace="http://schemas.datacontract.org/2004/07/ServiceLibrary")]
+    public enum StudentType : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Regular = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Open = 2,
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="HTTP.IStudentService")]
@@ -29,13 +41,17 @@ namespace WCFClient.HTTP {
     public partial class StudentRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
-        public int Id;
+        public string StudentKey;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public int StudentId;
         
         public StudentRequest() {
         }
         
-        public StudentRequest(int Id) {
-            this.Id = Id;
+        public StudentRequest(string StudentKey, int StudentId) {
+            this.StudentKey = StudentKey;
+            this.StudentId = StudentId;
         }
     }
     
@@ -45,21 +61,41 @@ namespace WCFClient.HTTP {
     public partial class StudentResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public string Name;
+        public int Id;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
-        public string Gender;
+        public string Name;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        public string Gender;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=3)]
         public string City;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=4)]
+        public WCFClient.HTTP.StudentType Type;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=5)]
+        public int RegularFees;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=6)]
+        public int CourseHours;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=7)]
+        public int HourlyRate;
         
         public StudentResponse() {
         }
         
-        public StudentResponse(string Name, string Gender, string City) {
+        public StudentResponse(int Id, string Name, string Gender, string City, WCFClient.HTTP.StudentType Type, int RegularFees, int CourseHours, int HourlyRate) {
+            this.Id = Id;
             this.Name = Name;
             this.Gender = Gender;
             this.City = City;
+            this.Type = Type;
+            this.RegularFees = RegularFees;
+            this.CourseHours = CourseHours;
+            this.HourlyRate = HourlyRate;
         }
     }
     
@@ -95,13 +131,19 @@ namespace WCFClient.HTTP {
             return base.Channel.GetStudent(request);
         }
         
-        public string GetStudent(int Id, out string Gender, out string City) {
+        public int GetStudent(string StudentKey, int StudentId, out string Name, out string Gender, out string City, out WCFClient.HTTP.StudentType Type, out int RegularFees, out int CourseHours, out int HourlyRate) {
             WCFClient.HTTP.StudentRequest inValue = new WCFClient.HTTP.StudentRequest();
-            inValue.Id = Id;
+            inValue.StudentKey = StudentKey;
+            inValue.StudentId = StudentId;
             WCFClient.HTTP.StudentResponse retVal = ((WCFClient.HTTP.IStudentService)(this)).GetStudent(inValue);
+            Name = retVal.Name;
             Gender = retVal.Gender;
             City = retVal.City;
-            return retVal.Name;
+            Type = retVal.Type;
+            RegularFees = retVal.RegularFees;
+            CourseHours = retVal.CourseHours;
+            HourlyRate = retVal.HourlyRate;
+            return retVal.Id;
         }
         
         public System.Threading.Tasks.Task<WCFClient.HTTP.StudentResponse> GetStudentAsync(WCFClient.HTTP.StudentRequest request) {
